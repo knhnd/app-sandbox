@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品を開く - 学生作品カタログ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #ECE7DB;
+    --ink: #1C2B39;
+    --ink-soft: #4A5A68;
+    --accent: #B8862E;
+    --line: #CFC6AE;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    font-family: "Inter", sans-serif;
+    color: var(--ink);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .bar-left { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
+  .back-link {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .back-link:hover { color: var(--accent); }
+  .meta { min-width: 0; }
+  .meta h1 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .meta p {
+    margin: 2px 0 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
+  .new-tab {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    white-space: nowrap;
+  }
+  .new-tab:hover { border-color: var(--accent); color: var(--accent); }
+  .stage { flex: 1; min-height: 0; }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    display: block;
+  }
+  .notice {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    text-align: center;
+    padding: 60px 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-left">
+    <a class="back-link" href="index.html">← 一覧に戻る</a>
+    <div class="meta">
+      <h1 id="app-title">読み込み中…</h1>
+      <p id="app-nickname"></p>
+    </div>
+  </div>
+  <a class="new-tab" id="new-tab-link" target="_blank" rel="noopener">新しいタブで開く ↗</a>
+</div>
+
+<div class="stage">
+  <iframe
+    id="app-frame"
+    sandbox="allow-scripts allow-forms allow-modals allow-popups"
+    referrerpolicy="no-referrer"
+  ></iframe>
+</div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  const titleEl = document.getElementById("app-title");
+  const nicknameEl = document.getElementById("app-nickname");
+  const frame = document.getElementById("app-frame");
+  const newTabLink = document.getElementById("new-tab-link");
+  const stage = document.querySelector(".stage");
+
+  if (!id) {
+    stage.innerHTML = '<p class="notice">作品IDが指定されていません。一覧から選び直してください。</p>';
+  } else {
+    fetch("data/manifest.json")
+      .then((res) => res.json())
+      .then((items) => {
+        const item = items.find((i) => i.id === id);
+        if (!item) {
+          stage.innerHTML = '<p class="notice">指定された作品が見つかりませんでした。</p>';
+          return;
+        }
+        titleEl.textContent = item.title;
+        nicknameEl.textContent = `by ${item.nickname} / No. ${item.id}`;
+        frame.src = item.appUrl;
+        newTabLink.href = item.appUrl;
+      })
+      .catch(() => {
+        stage.innerHTML = '<p class="notice">作品データの読み込みに失敗しました。</p>';
+      });
+  }
+</script>
+
+</body>
+</html>

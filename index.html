@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学生作品カタログ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <p class="eyebrow">Computer Workshop — Student Works</p>
+  <h1 class="site-title">学生作品カタログ</h1>
+  <p class="site-sub">バイブコーディングで生まれたアプリたちの記録棚。サムネイルをクリックして開いてください。</p>
+</header>
+
+<main>
+  <div id="grid" class="grid" aria-live="polite"></div>
+  <p id="empty-state" class="empty-state" hidden>
+    まだ登録された作品がありません。<code>data/manifest.json</code> を確認してください。
+  </p>
+  <p id="error-state" class="empty-state" hidden>
+    作品データの読み込みに失敗しました。<code>data/manifest.json</code> が存在するか確認してください。
+  </p>
+</main>
+
+<footer class="site-footer">
+  <p>各作品は学生本人が作成したものです。表示内容についての責任は作成者に帰属します。</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

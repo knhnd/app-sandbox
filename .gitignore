@@ -1,0 +1,19 @@
+# 依存関係（npm installで復元可能）
+node_modules/
+
+# ビルド生成物（GitHub Actions上で毎回生成し、Pagesへデプロイするためgit管理不要）
+apps/*
+!apps/.gitkeep
+thumbnails/*
+!thumbnails/.gitkeep
+data/manifest.json
+
+# OS / エディタ由来
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# 個人の環境変数など（今のところ未使用だが将来のため）
+.env
+.env.local
