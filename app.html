@@ -6,14 +6,14 @@
 <title>作品を開く - 学生作品カタログ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #ECE7DB;
-    --ink: #1C2B39;
-    --ink-soft: #4A5A68;
-    --accent: #B8862E;
-    --line: #CFC6AE;
+    --paper: #FAF8F5;
+    --ink: #3D332C;
+    --ink-soft: #8C7C6E;
+    --accent: #D97757;
+    --line: #E7E0D6;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
@@ -21,7 +21,8 @@
     display: flex;
     flex-direction: column;
     background: var(--paper);
-    font-family: "Inter", sans-serif;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-weight: 400;
     color: var(--ink);
   }
   .bar {
@@ -35,7 +36,7 @@
   }
   .bar-left { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
   .back-link {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Zen Kaku Gothic New", sans-serif;
     font-size: 0.82rem;
     color: var(--ink-soft);
     text-decoration: none;
@@ -46,23 +47,24 @@
   .meta h1 {
     font-size: 1rem;
     margin: 0;
-    font-weight: 600;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .meta p {
     margin: 2px 0 0;
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Zen Kaku Gothic New", sans-serif;
     font-size: 0.75rem;
     color: var(--ink-soft);
   }
   .new-tab {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Zen Kaku Gothic New", sans-serif;
     font-size: 0.78rem;
     color: var(--ink);
     text-decoration: none;
     border: 1px solid var(--line);
+    border-radius: 4px;
     padding: 6px 12px;
     white-space: nowrap;
   }
@@ -76,7 +78,7 @@
     display: block;
   }
   .notice {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "Zen Kaku Gothic New", sans-serif;
     font-size: 0.85rem;
     color: var(--ink-soft);
     text-align: center;
