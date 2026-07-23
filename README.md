@@ -1,7 +1,7 @@
-# 学生作品カタログ（Student Portfolio Site）
+# App Sandbox Site
 
-Google Form経由で集めた学生のバイブコーディング作品（単一HTMLファイル）を
-一覧表示し、GitHub Pagesで公開するためのサイトです。
+Google Form経由で集めたバイブコーディング作品（単一HTMLファイル）を
+一覧表示し、GitHub Pagesで公開するためのサイト。
 
 ## 全体の仕組み
 
