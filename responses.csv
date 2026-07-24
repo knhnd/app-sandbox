@@ -1246,3 +1246,182 @@ a{ color: inherit; text-decoration: none; }
 
 </body>
 </html>"
+2026/07/24 12:53:06,tk230329@t.iput.ac.jp,samoedodaisukilovelove,"<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+  <meta charset=""UTF-8"">
+  <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+  <title>爆速！イヌ・ネコ仕分けゲーム</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+      user-select: none;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .score-board {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .card {
+      font-size: 100px;
+      height: 150px;
+      line-height: 150px;
+      background-color: #fafafa;
+      border: 3px dashed #ccc;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .btn {
+      flex: 1;
+      padding: 15px 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.1s;
+    }
+    .btn:active {
+      opacity: 0.7;
+    }
+    .btn-dog { background-color: #ff9f43; color: white; }
+    .btn-cat { background-color: #54a0ff; color: white; }
+    
+    .guide {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    /* ゲームオーバー時のオーバーレイ */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .overlay button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin-top: 15px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class=""container"">
+    <h2>🐶 イヌ・ネコ仕分け 🐱</h2>
+    <div class=""score-board"">スコア: <span id=""score"">0</span> 匹</div>
+    
+    <div class=""card"" id=""animal-display"">❓</div>
+
+    <div class=""controls"">
+      <button class=""btn btn-dog"" onclick=""checkAnswer('dog')"">⬅️ イヌ (←)</button>
+      <button class=""btn btn-cat"" onclick=""checkAnswer('cat')"">ネコ (→) ➡️</button>
+    </div>
+
+    <div class=""guide"">キーボードの <b>[←]</b> <b>[→]</b> キーでも操作できます</div>
+  </div>
+
+  <!-- ゲームオーバー画面 -->
+  <div class=""overlay"" id=""game-over"">
+    <h1>ミス！</h1>
+    <p>記録: <span id=""final-score"">0</span> 連続成功！</p>
+    <button onclick=""startGame()"">もう一度プレイ</button>
+  </div>
+
+  <script>
+    // 動物データの定義 (正解タイプと絵文字)
+    const animals = [
+      { type: 'dog', emoji: '🐶' },
+      { type: 'dog', emoji: '🐕' },
+      { type: 'dog', emoji: '🦮' },
+      { type: 'cat', emoji: '🐱' },
+      { type: 'cat', emoji: '🐈' },
+      { type: 'cat', emoji: '🐈‍⬛' }
+    ];
+
+    let currentAnimal = null;
+    let score = 0;
+    let isPlaying = false;
+
+    // ゲーム開始
+    function startGame() {
+      score = 0;
+      isPlaying = true;
+      document.getElementById('score').textContent = score;
+      document.getElementById('game-over').style.display = 'none';
+      nextAnimal();
+    }
+
+    // 次の動物をランダム表示
+    function nextAnimal() {
+      const randomIndex = Math.floor(Math.random() * animals.length);
+      currentAnimal = animals[randomIndex];
+      document.getElementById('animal-display').textContent = currentAnimal.emoji;
+    }
+
+    // 回答の判定
+    function checkAnswer(selectedType) {
+      if (!isPlaying) return;
+
+      if (selectedType === currentAnimal.type) {
+        // 正解
+        score++;
+        document.getElementById('score').textContent = score;
+        nextAnimal();
+      } else {
+        // 不正解（ゲームオーバー）
+        isPlaying = false;
+        document.getElementById('final-score').textContent = score;
+        document.getElementById('game-over').style.display = 'flex';
+      }
+    }
+
+    // キーボード操作の割り当て (←キー: イヌ / →キー: ネコ)
+    document.addEventListener('keydown', (event) => {
+      if (!isPlaying) {
+        // ゲームオーバー時にSpaceやEnterでリトライ
+        if (event.key === ' ' || event.key === 'Enter') {
+          startGame();
+        }
+        return;
+      }
+
+      if (event.key === 'ArrowLeft') {
+        checkAnswer('dog');
+      } else if (event.key === 'ArrowRight') {
+        checkAnswer('cat');
+      }
+    });
+
+    // 初回起動
+    startGame();
+  </script>
+</body>
+</html>"

@@ -3,6 +3,8 @@
 Google Form経由で集めたバイブコーディング作品（単一HTMLファイル）を
 一覧表示し、GitHub Pagesで公開するためのサイト。
 
+- Google Forms URL: `https://forms.gle/ugzyW4cHE7mUMnjT6`
+
 ## 全体の仕組み
 
 ```
@@ -82,6 +84,7 @@ GitHub Pagesに自動デプロイ
 
 質問は2つだけでOKです（列名はそのまま`scripts/build.mjs`の設定と合わせてください）。
 
+- Google Forms URL: `https://forms.gle/ugzyW4cHE7mUMnjT6`
 - **ニックネーム**（記述式）
 - **HTMLコード**（記述式・段落、学生には「作成したHTMLファイルの中身を全部コピペしてください」と案内）
 
