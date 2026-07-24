@@ -1,0 +1,4 @@
+タイムスタンプ,ニックネーム,HTMLコード
+2026/07/20 10:00:00,あんこ,"<!DOCTYPE html><html><head><title>じゃんけんマシン</title></head><body style=""font-family:sans-serif;text-align:center;padding:40px""><h1>じゃんけんマシン</h1><button onclick=""alert('グー!')"">出す</button></body></html>"
+2026/07/20 10:05:00,ミント,"<!DOCTYPE html><html><head><title>おみくじアプリ</title></head><body style=""background:#eef;text-align:center;padding:40px""><h1>今日の運勢</h1><p id=""r"">?</p><script>document.getElementById('r').textContent=['大吉','吉','凶'][Math.floor(Math.random()*3)]</script></body></html>"
+2026/07/20 10:10:00,ゆず,"<html><body><h2>タイトルなしのシンプルページ</h2><p>titleタグが無い例</p></body></html>"

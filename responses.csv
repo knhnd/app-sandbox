@@ -1,4 +1,1248 @@
-タイムスタンプ,ニックネーム,HTMLコード
-2026/07/20 10:00:00,あんこ,"<!DOCTYPE html><html><head><title>じゃんけんマシン</title></head><body style=""font-family:sans-serif;text-align:center;padding:40px""><h1>じゃんけんマシン</h1><button onclick=""alert('グー!')"">出す</button></body></html>"
-2026/07/20 10:05:00,ミント,"<!DOCTYPE html><html><head><title>おみくじアプリ</title></head><body style=""background:#eef;text-align:center;padding:40px""><h1>今日の運勢</h1><p id=""r"">?</p><script>document.getElementById('r').textContent=['大吉','吉','凶'][Math.floor(Math.random()*3)]</script></body></html>"
-2026/07/20 10:10:00,ゆず,"<html><body><h2>タイトルなしのシンプルページ</h2><p>titleタグが無い例</p></body></html>"
+タイムスタンプ,メールアドレス,ニックネーム,コード
+2026/07/24 11:08:49,ken.h.0802@gmail.com,Honda,"<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>AI EXPLORERS | 近未来IDカードジェネレーター</title>
+    <style>
+        /* 1. 全体デザイン（サイバーパンク・ダークモード） */
+        :root {
+            --bg-color: #0a0b10;
+            --card-bg: rgba(20, 22, 37, 0.85);
+            --neon-pink: #ff007f;
+            --neon-cyan: #00f3ff;
+            --neon-purple: #9d4edd;
+            --text-color: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* 背景のウネウネ動く光 */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.15) 0%, transparent 70%);
+            top: 10%;
+            left: 10%;
+            z-index: -1;
+            animation: float 10s infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+            color: var(--neon-cyan);
+        }
+
+        /* 2. メインのIDカード（ここが立体的に光る） */
+        .card-container {
+            perspective: 1000px;
+            margin-bottom: 30px;
+        }
+
+        .id-card {
+            width: 420px;
+            background: var(--card-bg);
+            border: 2px solid var(--neon-pink);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.3), inset 0 0 15px rgba(255, 0, 127, 0.1);
+            backdrop-filter: blur(8px);
+            transform: rotateX(5px) rotateY(-5px);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* カードのグラデーション光の枠線 */
+        .id-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 14px;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0.7;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            font-size: 0.9rem;
+            color: var(--neon-cyan);
+            letter-spacing: 3px;
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            padding: 2px 8px;
+            border-radius: 20px;
+            color: var(--neon-cyan);
+            box-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+        }
+
+        .card-body {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* アバター（近未来風マスク） */
+        .avatar-box {
+            width: 90px;
+            height: 110px;
+            border: 1px solid var(--neon-purple);
+            background: rgba(157, 78, 221, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(157, 78, 221, 0.4);
+            position: relative;
+        }
+
+        .profile-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .info-item {
+            font-size: 0.8rem;
+            color: #a0a5c0;
+        }
+
+        .info-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .info-value.name {
+            font-size: 1.3rem;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 3. 入力フォームエリア */
+        .input-panel {
+            width: 420px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .input-group input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            padding: 10px;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+        }
+
+        /* 爆イケ生成ボタン */
+        .generate-btn {
+            width: 100%;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+            transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--neon-pink);
+        }
+
+        /* 4. 動的エフェクト用（JavaScriptで制御） */
+        .glitch-flash {
+            animation: flash 0.15s ease 3;
+        }
+
+        @keyframes flash {
+            0% { opacity: 0.3; border-color: var(--neon-cyan); box-shadow: 0 0 30px var(--neon-cyan); }
+            50% { opacity: 1; border-color: var(--neon-pink); box-shadow: 0 0 30px var(--neon-pink); }
+            100% { opacity: 0.3; border-color: var(--neon-purple); box-shadow: 0 0 30px var(--neon-purple); }
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10;
+            animation: explode 0.8s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AI GENERATED ID</h1>
+    </header>
+
+    <div class=""card-container"">
+        <div class=""id-card"" id=""idCard"">
+            <div class=""card-header"">
+                <h2>AI EXPLORERS ID</h2>
+                <div class=""status-badge"">● ACTIVE</div>
+            </div>
+            <div class=""card-body"">
+                <div class=""avatar-box"" id=""avatar"">😎</div>
+                <div class=""profile-info"">
+                    <div class=""info-item"">
+                        <span class=""info-label"">Name</span>
+                        <div class=""info-value name"" id=""cardName"">knhnd</div>
+                    </div>
+                    <div class=""info-item"">
+                        <span class=""info-label"">Affiliation</span>
+                        <div class=""info-value"" id=""cardAffiliation"">AI大学</div>
+                    </div>
+                    <div class=""info-item"">
+                        <span class=""info-label"">Skill</span>
+                        <div class=""info-value"" id=""cardSkill"">✨AI Prompting / HTML / CSS / JS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=""input-panel"">
+        <div class=""input-group"">
+            <label>AIへの指示 / プロンプト</label>
+            <input type=""text"" id=""promptInput"" value=""デザインを爆イケなサイバーパンク風にして！"">
+        </div>
+        <div class=""input-group"">
+            <label>あなたの名前</label>
+            <input type=""text"" id=""nameInput"" value=""Name"">
+        </div>
+        <button class=""generate-btn"" id=""genBtn"">
+            <span>✨</span> AIでアプリ画面を生成 <span>✨</span>
+        </button>
+    </div>
+
+    <script>
+        const genBtn = document.getElementById('genBtn');
+        const idCard = document.getElementById('idCard');
+        const cardName = document.getElementById('cardName');
+        const promptInput = document.getElementById('promptInput');
+        const nameInput = document.getElementById('nameInput');
+        const avatar = document.getElementById('avatar');
+
+        // アバターのバリエーション
+        const avatars = ['😎', '🤖', '👾', '🚀', '🧠', '⚡️'];
+
+        genBtn.addEventListener('click', (e) => {
+            // 1. 入力値の反映
+            cardName.textContent = nameInput.value || 'NO NAME';
+
+            // 2. ランダムでアバターを変更（AIが生成し直した感を演出）
+            const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+            avatar.textContent = randomAvatar;
+
+            // 3. 画面の明滅（グリッチエフェクト）
+            idCard.classList.add('glitch-flash');
+            setTimeout(() => {
+                idCard.classList.remove('glitch-flash');
+            }, 500);
+
+            // 4. パーティクル（光の粒子）のバーストエフェクト
+            createParticles(e.clientX, e.clientY);
+        });
+
+        // 光の粒子を飛び散らせる関数
+        function createParticles(startX, startY) {
+            const particleCount = 40;
+            const colors = ['#ff007f', '#00f3ff', '#9d4edd'];
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // ランダムな色とサイズ
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                const size = Math.random() * 8 + 4;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // ボタンのクリック位置に配置
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+
+                // 飛び散る方向をランダムに設定（CSS変数に渡す）
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 150 + 50;
+                const x = Math.cos(angle) * velocity;
+                const y = Math.sin(angle) * velocity;
+                
+                particle.style.setProperty('--x', `${x}px`);
+                particle.style.setProperty('--y', `${y}px`);
+
+                document.body.appendChild(particle);
+
+                // アニメーション終了後に要素を削除
+                setTimeout(() => {
+                    particle.remove();
+                }, 800);
+            }
+        }
+
+        // マウスの動きに合わせてカードを少し傾ける（リアルタイム3D感）
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            idCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+    </script>
+</body>
+</html>"
+2026/07/24 11:10:50,ken.h.0802@gmail.com,ken,"<!DOCTYPE html>
+<html lang=""ja"">
+<head>
+<meta charset=""UTF-8"">
+<meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+<title>長野市 | 山に抱かれ、歴史が息づくまち</title>
+<link rel=""preconnect"" href=""https://fonts.googleapis.com"">
+<link rel=""preconnect"" href=""https://fonts.gstatic.com"" crossorigin>
+<link href=""https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"" rel=""stylesheet"">
+<style>
+/* ==========================================================
+   長野市 NAGANO CITY — style.css
+   Token system
+   Color   : paper #FAF4E9 / ink #2B2320 / lantern #C1440E
+             indigo #1F3A52 / gold #C9974C / moss #5C6E4A
+   Type    : Shippori Mincho (display) + Zen Kaku Gothic New (body)
+   Signature: layered mountain silhouettes as recurring hero &
+              section-divider motif, echoing the basin/mountain
+              geography of Nagano.
+   ========================================================== */
+
+:root{
+  --paper: #FAF4E9;
+  --paper-dim: #F1E6D2;
+  --ink: #2B2320;
+  --ink-soft: #6b5d51;
+  --lantern: #C1440E;
+  --lantern-dark: #932f08;
+  --indigo: #1F3A52;
+  --indigo-deep: #142838;
+  --gold: #C9974C;
+  --moss: #5C6E4A;
+  --moss-deep: #3d4a31;
+
+  --font-display: ""Shippori Mincho"", serif;
+  --font-body: ""Zen Kaku Gothic New"", sans-serif;
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --shadow-soft: 0 16px 40px -12px rgba(43, 35, 32, 0.25);
+  --shadow-card: 0 10px 26px -10px rgba(43, 35, 32, 0.18);
+  --container: 1120px;
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3{
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.4;
+}
+
+p{ margin: 0; }
+
+img, svg{ display: block; max-width: 100%; }
+
+a{ color: inherit; text-decoration: none; }
+
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--lantern);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 0 0 8px 0;
+  z-index: 200;
+}
+.skip-link:focus{ left: 0; }
+
+:focus-visible{
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ============ HEADER ============ */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.header-inner{
+  pointer-events: auto;
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(250, 244, 233, 0.86);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(43,35,32,0.08);
+  border-radius: 999px;
+  padding: 10px 12px 10px 20px;
+  box-shadow: var(--shadow-card);
+}
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.logo-mark{ width: 26px; height: 26px; color: var(--lantern); }
+.logo-mark svg{ width: 100%; height: 100%; }
+.logo-text{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.logo-text em{
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.main-nav{
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.main-nav a{
+  font-size: 0.86rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--ink-soft);
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+.main-nav a:hover{
+  background: var(--lantern);
+  color: #fff;
+}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 15px 26px;
+  border-radius: 999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.btn svg{ transition: transform 0.25s ease; }
+.btn:hover{ transform: translateY(-3px); }
+.btn-primary{
+  background: var(--lantern);
+  color: #fff;
+  box-shadow: 0 14px 30px -10px rgba(193, 68, 14, 0.55);
+}
+.btn-primary:hover{ background: var(--lantern-dark); }
+.btn-primary:hover svg{ transform: translateY(3px); }
+.btn-gold{
+  background: var(--gold);
+  color: var(--indigo-deep);
+  box-shadow: 0 14px 30px -10px rgba(201, 151, 76, 0.55);
+}
+.btn-gold:hover{ background: #dcae66; }
+.btn-gold:hover svg{ transform: translate(3px, -3px); }
+
+/* ============ EYEBROW / SECTION HEADS ============ */
+.eyebrow{
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.eyebrow-dark{ color: var(--lantern); }
+.eyebrow-light{ color: var(--gold); }
+
+.section-title{
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  max-width: 16ch;
+  margin-bottom: 20px;
+}
+.section-title.light{ color: var(--paper); }
+
+.section-lead{
+  max-width: 60ch;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  margin-bottom: 48px;
+}
+.section-lead.light{ color: rgba(250,244,233,0.78); }
+
+.br-mobile{ display: none; }
+
+/* ============ HERO ============ */
+.hero{
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f7dcae 0%, #f0b285 32%, #d97a52 58%, var(--indigo) 100%);
+  margin-top: -78px;
+  padding-top: 78px;
+}
+.hero-sky{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.sun{
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fff3d6, var(--lantern) 70%);
+  box-shadow: 0 0 90px 30px rgba(193, 68, 14, 0.35);
+  animation: glow 6s ease-in-out infinite;
+}
+@keyframes glow{
+  0%, 100%{ box-shadow: 0 0 90px 30px rgba(193, 68, 14, 0.35); }
+  50%{ box-shadow: 0 0 120px 45px rgba(193, 68, 14, 0.5); }
+}
+.clouds{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 45%;
+}
+.cloud{ fill: rgba(255,255,255,0.35); }
+.c1{ animation: drift 46s linear infinite; }
+.c2{ animation: drift 60s linear infinite reverse; }
+.c3{ animation: drift 38s linear infinite; }
+@keyframes drift{
+  0%{ transform: translateX(-8%); }
+  50%{ transform: translateX(8%); }
+  100%{ transform: translateX(-8%); }
+}
+.mountains{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 46%;
+}
+.mountains.far path{ fill: #a35a6e; opacity: 0.55; }
+.mountains.near path{ fill: var(--indigo-deep); }
+
+.hero-content{
+  position: relative;
+  z-index: 2;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+  color: #fff;
+}
+.hero h1{
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  color: #fff;
+  text-shadow: 0 6px 30px rgba(20, 40, 56, 0.35);
+  margin-bottom: 26px;
+}
+.hero-lead{
+  max-width: 46ch;
+  font-size: 1.08rem;
+  color: rgba(255,255,255,0.94);
+  text-shadow: 0 2px 12px rgba(20, 40, 56, 0.3);
+  margin-bottom: 36px;
+}
+
+/* ============ DIVIDER (mountain skyline) ============ */
+.divider{
+  --fill: var(--paper);
+  height: 70px;
+  width: 100%;
+  background-color: var(--fill);
+  clip-path: polygon(
+    0% 100%, 0% 45%, 6% 68%, 14% 30%, 22% 58%, 30% 15%,
+    38% 50%, 46% 25%, 54% 55%, 62% 20%, 70% 48%, 78% 12%,
+    86% 42%, 94% 22%, 100% 40%, 100% 100%
+  );
+  position: relative;
+  z-index: 3;
+  margin-top: -2px;
+}
+.divider.flip{ transform: scaleX(-1); }
+
+/* ============ SECTION BASE ============ */
+.section{ padding: 96px 0; }
+.section-dark{ background: var(--indigo-deep); }
+.section-moss{ background: var(--moss-deep); }
+
+/* ============ STATS ============ */
+.stat-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.stat-card{
+  background: #fff;
+  border: 1px solid rgba(43,35,32,0.07);
+  border-radius: var(--radius-md);
+  padding: 28px 22px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease;
+}
+.stat-card:hover{ transform: translateY(-6px); }
+.stat-icon{ width: 34px; height: 34px; color: var(--lantern); margin-bottom: 16px; }
+.stat-num{
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.stat-label{ color: var(--ink-soft); font-size: 0.88rem; }
+
+/* ============ SIGHTS ============ */
+.sight-feature{
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+  background: rgba(250,244,233,0.04);
+  border: 1px solid rgba(250,244,233,0.12);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-bottom: 32px;
+}
+.sight-feature-visual{
+  background: radial-gradient(circle at 50% 30%, rgba(201,151,76,0.16), transparent 70%);
+  border-radius: var(--radius-md);
+  padding: 30px;
+}
+.sight-feature-visual svg{ width: 100%; height: auto; max-width: 220px; margin: 0 auto; }
+.tag{
+  display: inline-block;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.sight-feature-text h3{
+  color: var(--paper);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  margin-bottom: 16px;
+}
+.sight-feature-text p{
+  color: rgba(250,244,233,0.82);
+  max-width: 56ch;
+}
+
+.sight-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.sight-card{
+  background: rgba(250,244,233,0.05);
+  border: 1px solid rgba(250,244,233,0.12);
+  border-radius: var(--radius-md);
+  padding: 30px 26px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.sight-card:hover{
+  transform: translateY(-6px);
+  background: rgba(250,244,233,0.09);
+}
+.sight-icon{ width: 36px; height: 36px; color: var(--gold); margin-bottom: 18px; }
+.sight-card h3{
+  color: var(--paper);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.sight-card p{ color: rgba(250,244,233,0.75); font-size: 0.92rem; }
+
+/* ============ TIMELINE ============ */
+.timeline{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 2px solid var(--gold);
+  max-width: 760px;
+}
+.timeline li{
+  position: relative;
+  padding: 0 0 44px 34px;
+}
+.timeline li:last-child{ padding-bottom: 0; }
+.timeline li::before{
+  content: """";
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--lantern);
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+.tl-year{
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--lantern);
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+.tl-body h3{ font-size: 1.18rem; margin-bottom: 8px; }
+.tl-body p{ color: var(--ink-soft); max-width: 58ch; font-size: 0.95rem; }
+
+/* ============ MUSEUMS ============ */
+.museum-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.museum-card{
+  background: rgba(250,244,233,0.06);
+  border: 1px solid rgba(250,244,233,0.14);
+  border-radius: var(--radius-md);
+  padding: 32px 26px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.museum-card:hover{
+  transform: translateY(-6px);
+  background: rgba(250,244,233,0.1);
+}
+.museum-icon{ width: 38px; height: 38px; color: var(--gold); margin-bottom: 18px; }
+.museum-card h3{ color: var(--paper); font-size: 1.14rem; margin-bottom: 12px; }
+.museum-card p{ color: rgba(250,244,233,0.78); font-size: 0.92rem; }
+
+/* ============ LIFE ============ */
+.life-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.life-card{
+  background: #fff;
+  border: 1px solid rgba(43,35,32,0.07);
+  border-radius: var(--radius-md);
+  padding: 30px 26px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease;
+}
+.life-card:hover{ transform: translateY(-6px); }
+.life-icon-wrap{
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--paper-dim);
+  color: var(--moss);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.life-icon-wrap svg{ width: 26px; height: 26px; }
+.life-card h3{ font-size: 1.1rem; margin-bottom: 10px; }
+.life-card p{ color: var(--ink-soft); font-size: 0.92rem; }
+
+/* ============ CTA ============ */
+.cta{
+  position: relative;
+  background: linear-gradient(180deg, var(--indigo) 0%, var(--indigo-deep) 100%);
+  padding: 120px 0 100px;
+  overflow: hidden;
+  text-align: center;
+}
+.cta-sky{ position: absolute; inset: 0; opacity: 0.5; }
+.cta-sky .mountains{ position: absolute; bottom: -10px; width: 100%; height: 60%; }
+.cta-sky .mountains path{ fill: rgba(201,151,76,0.12); }
+.cta-content{ position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+.cta-title{
+  color: var(--paper);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  margin-bottom: 20px;
+}
+.cta-lead{
+  color: rgba(250,244,233,0.78);
+  max-width: 48ch;
+  margin-bottom: 36px;
+}
+
+/* ============ FOOTER ============ */
+.site-footer{
+  background: var(--indigo-deep);
+  padding: 34px 0 40px;
+  border-top: 1px solid rgba(250,244,233,0.1);
+}
+.footer-inner{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.footer-logo{
+  font-family: var(--font-display);
+  color: var(--paper);
+  font-weight: 700;
+}
+.footer-logo em{ font-style: normal; color: var(--gold); font-size: 0.75em; margin-left: 6px; }
+.footer-note{
+  color: rgba(250,244,233,0.55);
+  font-size: 0.8rem;
+  max-width: 46ch;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px){
+  .stat-grid{ grid-template-columns: repeat(2, 1fr); }
+  .sight-grid, .museum-grid, .life-grid{ grid-template-columns: repeat(2, 1fr); }
+  .sight-feature{ grid-template-columns: 1fr; padding: 30px; }
+  .sight-feature-visual svg{ max-width: 160px; }
+  .main-nav{ display: none; }
+  .br-mobile{ display: inline; }
+}
+
+@media (max-width: 620px){
+  .section{ padding: 68px 0; }
+  .stat-grid{ grid-template-columns: 1fr 1fr; }
+  .sight-grid, .museum-grid, .life-grid{ grid-template-columns: 1fr; }
+  .hero{ min-height: 100vh; }
+  .header-inner{ padding: 8px 8px 8px 16px; }
+  .logo-text em{ display: none; }
+  .container{ padding: 0 20px; }
+  .cta{ padding: 90px 0 80px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  .sun, .cloud{ animation: none; }
+  .btn, .stat-card, .sight-card, .museum-card, .life-card{ transition: none; }
+}
+
+</style>
+</head>
+<body>
+
+<a class=""skip-link"" href=""#main"">本文へスキップ</a>
+
+<header class=""site-header"">
+  <div class=""header-inner"">
+    <a href=""#top"" class=""logo"">
+      <span class=""logo-mark"" aria-hidden=""true"">
+        <svg viewBox=""0 0 40 40""><path d=""M20 4 L36 34 L4 34 Z"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linejoin=""round""/><path d=""M20 4 L20 34"" stroke=""currentColor"" stroke-width=""1.5""/></svg>
+      </span>
+      <span class=""logo-text"">長野市<em>NAGANO CITY</em></span>
+    </a>
+    <nav class=""main-nav"" aria-label=""サイト内ナビゲーション"">
+      <a href=""#overview"">まちの概要</a>
+      <a href=""#sights"">見どころ</a>
+      <a href=""#history"">歴史・文化財</a>
+      <a href=""#life"">くらし</a>
+      <a href=""#cta"">移住を考える</a>
+    </nav>
+  </div>
+</header>
+
+<main id=""main"">
+
+  <!-- ============ HERO ============ -->
+  <section id=""top"" class=""hero"">
+    <div class=""hero-sky"" aria-hidden=""true"">
+      <div class=""sun""></div>
+      <svg class=""clouds"" viewBox=""0 0 1200 200"" preserveAspectRatio=""none"">
+        <ellipse class=""cloud c1"" cx=""180"" cy=""60"" rx=""140"" ry=""22""/>
+        <ellipse class=""cloud c2"" cx=""900"" cy=""110"" rx=""180"" ry=""26""/>
+        <ellipse class=""cloud c3"" cx=""550"" cy=""40"" rx=""110"" ry=""18""/>
+      </svg>
+      <svg class=""mountains far"" viewBox=""0 0 1440 320"" preserveAspectRatio=""none"">
+        <path d=""M0,320 L0,180 L160,90 L320,200 L480,60 L640,170 L800,40 L980,190 L1160,100 L1320,210 L1440,140 L1440,320 Z""/>
+      </svg>
+      <svg class=""mountains near"" viewBox=""0 0 1440 320"" preserveAspectRatio=""none"">
+        <path d=""M0,320 L0,230 L200,120 L380,240 L560,140 L760,260 L960,110 L1180,230 L1320,150 L1440,220 L1440,320 Z""/>
+      </svg>
+    </div>
+    <div class=""hero-content"">
+      <p class=""eyebrow"">信州・善光寺の門前町</p>
+      <h1>山に抱かれ、<br>歴史が息づくまち。</h1>
+      <p class=""hero-lead"">1400年の歴史を刻む善光寺の門前町として栄え、雄大な山々と四季の恵みに囲まれて、旅する人にも暮らす人にもやさしい時間が流れる場所 ── それが長野市です。</p>
+      <a href=""#overview"" class=""btn btn-primary"">
+        <span>まちを訪ねてみる</span>
+        <svg viewBox=""0 0 24 24"" width=""18"" height=""18""><path d=""M12 4v16m0 0l-6-6m6 6l6-6"" fill=""none"" stroke=""currentColor"" stroke-width=""2"" stroke-linecap=""round"" stroke-linejoin=""round""/></svg>
+      </a>
+    </div>
+  </section>
+
+  <div class=""divider"" style=""--fill:var(--paper)""></div>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section id=""overview"" class=""section"">
+    <div class=""container"">
+      <p class=""eyebrow eyebrow-dark"">OVERVIEW</p>
+      <h2 class=""section-title"">はじめまして、長野市です。</h2>
+      <p class=""section-lead"">長野盆地の中央に位置し、千曲川のほとりに広がる長野市。北陸新幹線で首都圏から気軽に訪れられる距離にありながら、一歩まちを出れば山々と田園が広がる、都市と自然が心地よく共存するまちです。善光寺の参拝客でにぎわう門前町の顔と、真田家十万石の城下町・松代の顔、そして戸隠の山岳信仰の里の顔。ひとつのまちの中に、いくつもの物語が息づいています。</p>
+
+      <div class=""stat-grid"">
+        <div class=""stat-card"">
+          <svg class=""stat-icon"" viewBox=""0 0 48 48""><path d=""M6 34 L20 12 L28 22 L36 8 L42 34"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linejoin=""round"" stroke-linecap=""round""/><line x1=""4"" y1=""34"" x2=""44"" y2=""34"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linecap=""round""/></svg>
+          <p class=""stat-num"">約80分</p>
+          <p class=""stat-label"">新幹線で東京から最短アクセス</p>
+        </div>
+        <div class=""stat-card"">
+          <svg class=""stat-icon"" viewBox=""0 0 48 48""><rect x=""10"" y=""10"" width=""28"" height=""28"" rx=""3"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/><path d=""M10 20 L38 20 M20 10 L20 38"" stroke=""currentColor"" stroke-width=""2"" stroke-linecap=""round""/></svg>
+          <p class=""stat-num"">約1400年</p>
+          <p class=""stat-label"">善光寺が紡いできた祈りの歴史</p>
+        </div>
+        <div class=""stat-card"">
+          <svg class=""stat-icon"" viewBox=""0 0 48 48""><path d=""M24 6 L38 26 L10 26 Z"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linejoin=""round""/><path d=""M14 34 L34 34 M17 40 L31 40"" stroke=""currentColor"" stroke-width=""2.2"" stroke-linecap=""round""/></svg>
+          <p class=""stat-num"">国宝</p>
+          <p class=""stat-label"">善光寺本堂・江戸中期の木造建築</p>
+        </div>
+        <div class=""stat-card"">
+          <svg class=""stat-icon"" viewBox=""0 0 48 48""><circle cx=""24"" cy=""24"" r=""15"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/><path d=""M24 9 L24 24 L33 30"" fill=""none"" stroke=""currentColor"" stroke-width=""2.2"" stroke-linecap=""round"" stroke-linejoin=""round""/></svg>
+          <p class=""stat-num"">四季</p>
+          <p class=""stat-label"">桜・新緑・紅葉・雪景色を一年通じて</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class=""divider flip"" style=""--fill:var(--indigo-deep)""></div>
+
+  <!-- ============ SIGHTS ============ -->
+  <section id=""sights"" class=""section section-dark"">
+    <div class=""container"">
+      <p class=""eyebrow eyebrow-light"">SIGHTSEEING</p>
+      <h2 class=""section-title light"">訪れるたびに、新しい発見を。</h2>
+      <p class=""section-lead light"">門前町の賑わいから山あいの静けさまで。長野市には歩くほどに表情を変える見どころが詰まっています。</p>
+
+      <div class=""sight-feature"">
+        <div class=""sight-feature-visual"" aria-hidden=""true"">
+          <svg viewBox=""0 0 200 200"">
+            <path d=""M40 170 L40 90 L100 40 L160 90 L160 170 Z"" fill=""none"" stroke=""var(--gold)"" stroke-width=""3""/>
+            <path d=""M20 90 L100 30 L180 90"" fill=""none"" stroke=""var(--gold)"" stroke-width=""3"" stroke-linecap=""round""/>
+            <rect x=""88"" y=""120"" width=""24"" height=""50"" fill=""none"" stroke=""var(--gold)"" stroke-width=""3""/>
+            <line x1=""40"" y1=""170"" x2=""160"" y2=""170"" stroke=""var(--gold)"" stroke-width=""3""/>
+          </svg>
+        </div>
+        <div class=""sight-feature-text"">
+          <p class=""tag"">長野市のシンボル</p>
+          <h3>善光寺</h3>
+          <p>創建から約1400年、特定の宗派を問わず誰もが参拝できるお寺として、全国から篤い信仰を集めてきました。現在の本堂は江戸中期の再建で、国宝に指定された堂々たる木造建築です。仁王門から本堂まで続く仲見世通りには、老舗の土産店や味噌ソフトクリーム、おやきといった信州グルメの食べ歩きスポットが軒を連ね、参拝の前後も飽きさせません。</p>
+        </div>
+      </div>
+
+      <div class=""sight-grid"">
+        <article class=""sight-card"">
+          <svg class=""sight-icon"" viewBox=""0 0 48 48""><path d=""M10 40 V16 M38 40 V16 M6 16 H42 M14 16 L14 8 M34 16 L34 8"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linecap=""round""/><path d=""M6 16 C6 10 14 6 24 6 C34 6 42 10 42 16"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/></svg>
+          <h3>戸隠神社</h3>
+          <p>五社からなる、2000年以上の歴史を伝える山岳信仰の聖地。奥社への杉並木の参道は荘厳な雰囲気で、日本三大そばのひとつ「戸隠そば」も名物です。</p>
+        </article>
+        <article class=""sight-card"">
+          <svg class=""sight-icon"" viewBox=""0 0 48 48""><path d=""M10 40 L10 20 L24 10 L38 20 L38 40 Z"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linejoin=""round""/><path d=""M6 20 H42"" stroke=""currentColor"" stroke-width=""2""/><rect x=""20"" y=""28"" width=""8"" height=""12"" fill=""none"" stroke=""currentColor"" stroke-width=""2""/></svg>
+          <h3>松代城下町</h3>
+          <p>真田家十代・250年にわたる城下町の面影が残るエリア。復元された松代城跡や真田邸、白壁の武家屋敷が並び、まち歩きだけで歴史散策が楽しめます。</p>
+        </article>
+        <article class=""sight-card"">
+          <svg class=""sight-icon"" viewBox=""0 0 48 48""><circle cx=""24"" cy=""20"" r=""8"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/><path d=""M12 40 C12 30 34 30 36 40"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linecap=""round""/><path d=""M6 44 H42"" stroke=""currentColor"" stroke-width=""2"" stroke-linecap=""round""/></svg>
+          <h3>城山公園</h3>
+          <p>入園無料の城山動物園と長野県立美術館が集まる市民の憩いの場。桜の名所としても知られ、散策と文化体験を一度に楽しめます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class=""divider"" style=""--fill:var(--paper)""></div>
+
+  <!-- ============ HISTORY TIMELINE ============ -->
+  <section id=""history"" class=""section"">
+    <div class=""container"">
+      <p class=""eyebrow eyebrow-dark"">HISTORY</p>
+      <h2 class=""section-title"">時を重ねた、まちの記憶。</h2>
+      <p class=""section-lead"">飛鳥時代の寺院創建から、戦国の城、江戸の城下町、そして今に残る国の史跡まで。長野市には歩みを重ねてきた確かな年輪があります。</p>
+
+      <ol class=""timeline"">
+        <li>
+          <span class=""tl-year"">642年ごろ</span>
+          <div class=""tl-body"">
+            <h3>善光寺、創建</h3>
+            <p>日本最古と伝わる仏像を祀る、無宗派の寺院として開かれました。以来、身分や宗派を問わず人々を迎え入れてきました。</p>
+          </div>
+        </li>
+        <li>
+          <span class=""tl-year"">1560年</span>
+          <div class=""tl-body"">
+            <h3>海津城（松代城）築城</h3>
+            <p>武田信玄と上杉謙信が信濃の覇権を争った川中島合戦の拠点として、千曲川を天然の要害とする城が築かれました。</p>
+          </div>
+        </li>
+        <li>
+          <span class=""tl-year"">1622年</span>
+          <div class=""tl-body"">
+            <h3>真田氏、松代藩主に</h3>
+            <p>真田信之が上田から移封され、以後十代・250年にわたり松代城を中心とした十万石の城下町が発展しました。</p>
+          </div>
+        </li>
+        <li>
+          <span class=""tl-year"">1707年</span>
+          <div class=""tl-body"">
+            <h3>善光寺本堂、再建</h3>
+            <p>江戸時代中期を代表する仏教建築として再建され、のちに国宝に指定されました。今も朝の法要「お朝事」が続けられています。</p>
+          </div>
+        </li>
+        <li>
+          <span class=""tl-year"">1981年</span>
+          <div class=""tl-body"">
+            <h3>松代城跡・真田邸が国史跡に</h3>
+            <p>廃城後、長らく石垣のみが残っていた松代城跡が、現存する御殿建築「真田邸」とともに国の史跡指定を受けました。</p>
+          </div>
+        </li>
+        <li>
+          <span class=""tl-year"">2004年</span>
+          <div class=""tl-body"">
+            <h3>松代城、復元</h3>
+            <p>発掘調査と文献をもとに櫓門・木橋・石垣が復元され、江戸期の姿に近い城跡として公開。桜の名所としても親しまれています。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <div class=""divider flip"" style=""--fill:var(--moss-deep)""></div>
+
+  <!-- ============ MUSEUMS ============ -->
+  <section class=""section section-moss"">
+    <div class=""container"">
+      <p class=""eyebrow eyebrow-light"">MUSEUMS &amp; ART</p>
+      <h2 class=""section-title light"">アートと歴史にふれる時間。</h2>
+      <p class=""section-lead light"">まち歩きの合間に立ち寄りたい、長野市の文化拠点。じっくり見ても、ふらりと立ち寄っても楽しめます。</p>
+
+      <div class=""museum-grid"">
+        <article class=""museum-card"">
+          <svg class=""museum-icon"" viewBox=""0 0 48 48""><path d=""M6 18 L24 6 L42 18"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linejoin=""round""/><rect x=""8"" y=""18"" width=""32"" height=""4"" fill=""none"" stroke=""currentColor"" stroke-width=""2""/><path d=""M12 22 V38 M20 22 V38 M28 22 V38 M36 22 V38"" stroke=""currentColor"" stroke-width=""2""/><line x1=""6"" y1=""40"" x2=""42"" y2=""40"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linecap=""round""/></svg>
+          <h3>長野県立美術館・東山魁夷館</h3>
+          <p>信州ゆかりの作家や信州の風景を描いた近現代美術を収蔵。日本画家・東山魁夷の作品を集めた分館も併設され、屋上からは善光寺周辺の眺望も楽しめます。</p>
+        </article>
+        <article class=""museum-card"">
+          <svg class=""museum-icon"" viewBox=""0 0 48 48""><rect x=""8"" y=""14"" width=""32"" height=""24"" rx=""2"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/><path d=""M8 22 H40"" stroke=""currentColor"" stroke-width=""2""/><circle cx=""16"" cy=""30"" r=""2.4"" fill=""currentColor"" stroke=""none""/><path d=""M22 32 L28 26 L34 32"" fill=""none"" stroke=""currentColor"" stroke-width=""2"" stroke-linecap=""round"" stroke-linejoin=""round""/></svg>
+          <h3>真田宝物館</h3>
+          <p>松代藩主・真田家に伝わる大名道具や古文書、甲冑などを収蔵・展示。松代城跡や真田邸とあわせて巡ると、城下町の歴史がより深く見えてきます。</p>
+        </article>
+        <article class=""museum-card"">
+          <svg class=""museum-icon"" viewBox=""0 0 48 48""><circle cx=""24"" cy=""16"" r=""7"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/><path d=""M12 40 C12 28 36 28 36 40"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linecap=""round""/><path d=""M18 40 V30 M30 40 V30"" stroke=""currentColor"" stroke-width=""2""/></svg>
+          <h3>象山記念館</h3>
+          <p>幕末の思想家・佐久間象山にまつわる資料を展示。砲術から医学、電信実験まで幅広い分野で先進的な功績を残した人物の足跡をたどれます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class=""divider"" style=""--fill:var(--paper)""></div>
+
+  <!-- ============ LIFE / LIVABILITY ============ -->
+  <section id=""life"" class=""section"">
+    <div class=""container"">
+      <p class=""eyebrow eyebrow-dark"">LIFE IN NAGANO</p>
+      <h2 class=""section-title"">訪れるだけじゃない、<br class=""br-mobile"">住むという選択。</h2>
+      <p class=""section-lead"">観光地としての顔だけでなく、長野市は暮らしのまちでもあります。都市の利便性と自然の豊かさ、そして人の温かさが同居する場所です。</p>
+
+      <div class=""life-grid"">
+        <div class=""life-card"">
+          <div class=""life-icon-wrap""><svg viewBox=""0 0 48 48""><path d=""M6 34 L20 12 L28 22 L36 8 L42 34"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linejoin=""round"" stroke-linecap=""round""/><line x1=""4"" y1=""34"" x2=""44"" y2=""34"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linecap=""round""/></svg></div>
+          <h3>都会にも自然にも近い立地</h3>
+          <p>新幹線なら東京から最短約80分。都心へのアクセスを保ちながら、少し車を走らせれば山や田園が広がる距離感が魅力です。</p>
+        </div>
+        <div class=""life-card"">
+          <div class=""life-icon-wrap""><svg viewBox=""0 0 48 48""><path d=""M24 6 C16 14 12 22 12 28 C12 35 17 40 24 40 C31 40 36 35 36 28 C36 22 32 14 24 6 Z"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/></svg></div>
+          <h3>手厚い子育て支援</h3>
+          <p>子どもの医療費助成や子育て支援施設、相談窓口が充実。まち全体で子育て世帯を後押しする体制が整っています。</p>
+        </div>
+        <div class=""life-card"">
+          <div class=""life-icon-wrap""><svg viewBox=""0 0 48 48""><circle cx=""24"" cy=""24"" r=""16"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/><path d=""M24 15 V33 M19 19 C19 19 21 17 24 17 C28 17 29 20 29 21.5 C29 25 24 24 24 27.5 C24 29 25 31 29 31"" fill=""none"" stroke=""currentColor"" stroke-width=""2"" stroke-linecap=""round""/></svg></div>
+          <h3>移住・定住のための制度</h3>
+          <p>若者や子育て世帯を対象とした家賃補助や、移住して起業する人への支援金など、新生活を後押しする独自の制度があります。</p>
+        </div>
+        <div class=""life-card"">
+          <div class=""life-icon-wrap""><svg viewBox=""0 0 48 48""><path d=""M8 40 C8 40 12 20 24 20 C36 20 40 40 40 40"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5"" stroke-linecap=""round""/><circle cx=""24"" cy=""10"" r=""4"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/></svg></div>
+          <h3>四季とともにある暮らし</h3>
+          <p>冬は除雪体制が整い雪道でも安心。りんごや長いも、あんずなど旬の恵みも豊かで、季節の移ろいを味わいながら暮らせます。</p>
+        </div>
+        <div class=""life-card"">
+          <div class=""life-icon-wrap""><svg viewBox=""0 0 48 48""><path d=""M24 6 L28 20 L42 20 L31 29 L35 43 L24 34 L13 43 L17 29 L6 20 L20 20 Z"" fill=""none"" stroke=""currentColor"" stroke-width=""2.2"" stroke-linejoin=""round""/></svg></div>
+          <h3>ふところの深い人柄</h3>
+          <p>一見控えめでも、飛び込めば温かく迎えてくれる人情味。移住者の声にもよく聞かれる、長野の人柄のよさです。</p>
+        </div>
+        <div class=""life-card"">
+          <div class=""life-icon-wrap""><svg viewBox=""0 0 48 48""><rect x=""8"" y=""10"" width=""32"" height=""28"" rx=""3"" fill=""none"" stroke=""currentColor"" stroke-width=""2.5""/><path d=""M8 18 H40"" stroke=""currentColor"" stroke-width=""2""/><path d=""M16 6 V14 M32 6 V14"" stroke=""currentColor"" stroke-width=""2.2"" stroke-linecap=""round""/></svg></div>
+          <h3>移住体験プログラム</h3>
+          <p>市内で数日暮らしを体験できる田舎暮らし体験施設や、移住相談会も定期的に開催。住む前に「相性」を確かめられます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section id=""cta"" class=""cta"">
+    <div class=""cta-sky"" aria-hidden=""true"">
+      <svg class=""mountains far"" viewBox=""0 0 1440 320"" preserveAspectRatio=""none"">
+        <path d=""M0,320 L0,200 L200,110 L400,220 L620,90 L820,200 L1020,120 L1220,230 L1440,160 L1440,320 Z""/>
+      </svg>
+    </div>
+    <div class=""container cta-content"">
+      <p class=""eyebrow eyebrow-light"">JOIN US</p>
+      <h2 class=""cta-title"">あなたの物語は、<br>ここから始まります。</h2>
+      <p class=""cta-lead"">訪れる旅から、暮らす日々へ。山に抱かれたこのまちは、いつでもあなたを待っています。</p>
+      <a class=""btn btn-gold"" href=""https://www.city.nagano.nagano.jp/iju/index.html"" target=""_blank"" rel=""noopener"">
+        <span>長野市の移住情報を見る</span>
+        <svg viewBox=""0 0 24 24"" width=""18"" height=""18""><path d=""M7 17L17 7M17 7H9M17 7V15"" fill=""none"" stroke=""currentColor"" stroke-width=""2"" stroke-linecap=""round"" stroke-linejoin=""round""/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class=""site-footer"">
+  <div class=""container footer-inner"">
+    <p class=""footer-logo"">長野市 <em>NAGANO CITY</em></p>
+    <p class=""footer-note"">本ページは長野市の魅力を紹介する非公式のファンサイトです。最新の観光・移住情報は長野市公式サイト等でご確認ください。</p>
+  </div>
+</footer>
+
+</body>
+</html>"
